@@ -1,6 +1,7 @@
 import path from 'node:path';
-import { describe, expect, it } from 'vitest';
+import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import request from 'supertest';
+import type { LogEntry } from '../../src/middleware/request-logging.js';
 
 process.env.DATABASE_PATH = path.join(
   process.cwd(),
@@ -11,6 +12,8 @@ process.env.DATABASE_PATH = path.join(
 const { resetDatabase } = await import('../../src/db/reset.js');
 resetDatabase();
 const { default: app } = await import('../../src/app.js');
+const { createLogger, setLoggerForTests } =
+  await import('../../src/middleware/request-logging.js');
 
 const credentials = {
   admin: { email: 'admin@example.test', password: 'SecureHub!Admin1' },
@@ -29,6 +32,21 @@ async function loggedIn(user: keyof typeof credentials) {
 }
 
 describe('SecureHub functional baseline', () => {
+  // Keep application log output out of the test results.
+  const logEntries: LogEntry[] = [];
+  let restoreLogger: () => void;
+
+  beforeAll(() => {
+    restoreLogger = setLoggerForTests(
+      createLogger((entry) => logEntries.push(entry)),
+    );
+  });
+
+  afterAll(() => {
+    restoreLogger();
+    logEntries.length = 0;
+  });
+
   it('returns the health response', async () => {
     await request(app).get('/health').expect(200, { status: 'ok' });
   });
@@ -48,6 +66,18 @@ describe('SecureHub functional baseline', () => {
       .type('form')
       .send({ email: credentials.alice.email, password: 'fel lösenord' })
       .expect(401);
+  });
+
+  it('redirects the root path to the dashboard', async () => {
+    await request(app).get('/').expect(302).expect('Location', '/dashboard');
+    await request(app)
+      .get('/dashboard')
+      .expect(302)
+      .expect('Location', '/login');
+
+    const alice = await loggedIn('alice');
+    await alice.get('/').expect(302).expect('Location', '/dashboard');
+    await alice.get('/dashboard').expect(200);
   });
 
   it('protects the dashboard and invalidates logout', async () => {

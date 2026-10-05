@@ -29,6 +29,10 @@ app.use(profileRouter(database));
 app.use(adminRouter(database));
 app.use(debugRouter(database));
 
+app.get('/', (_request, response) => {
+  response.redirect('/dashboard');
+});
+
 app.get('/debug/error', () => {
   throw new Error('Deterministic internal error for local verification');
 });
