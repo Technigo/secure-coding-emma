@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/styles.css" />
+    <title><%= ticket.title %> – SecureHub</title>
+  </head>
+  <body>
+    <header>
+      <nav aria-label="Huvudnavigation">
+        <a href="/dashboard">SecureHub</a>
+        <a href="/dashboard">Översikt</a>
+        <a href="/search">Sök ärenden</a>
+        <a href="/profile">Profil</a>
+        <% if (user.role === 'admin') { %>
+          <a href="/admin/users">Användare</a>
+        <% } %>
+        <span class="nav-user"><%= user.display_name %> (<%= user.role %>)</span>
+        <form method="post" action="/logout" class="nav-form">
+          <button type="submit">Logga ut</button>
+        </form>
+      </nav>
+    </header>
+    <main>
+      <p><a href="/dashboard">← Till översikten</a></p>
+      <h1><%= ticket.title %></h1>
+      <p><strong>Status:</strong> <%= ticket.status %></p>
+      <p><%= ticket.description %></p>
+
+      <section aria-labelledby="comments-heading">
+        <h2 id="comments-heading">Kommentarer</h2>
+        <% if (comments.length === 0) { %>
+          <p>Inga kommentarer ännu.</p>
+        <% } else { %>
+          <ul>
+            <% comments.forEach((comment) => { %>
+              <li><%- comment.body %></li>
+            <% }) %>
+          </ul>
+        <% } %>
+        <h3>Lägg till kommentar</h3>
+        <form method="post" action="/tickets/<%= ticket.id %>/comments">
+          <label for="body">Kommentar</label>
+          <textarea id="body" name="body" rows="4" required></textarea>
+          <button type="submit">Spara kommentar</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

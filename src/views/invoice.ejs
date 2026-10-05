@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/styles.css" />
+    <title><%= invoice.invoice_number %> – SecureHub</title>
+  </head>
+  <body>
+    <header>
+      <nav aria-label="Huvudnavigation">
+        <a href="/dashboard">SecureHub</a>
+        <a href="/dashboard">Översikt</a>
+        <a href="/search">Sök ärenden</a>
+        <a href="/profile">Profil</a>
+        <% if (user.role === 'admin') { %>
+          <a href="/admin/users">Användare</a>
+        <% } %>
+        <span class="nav-user"><%= user.display_name %> (<%= user.role %>)</span>
+        <form method="post" action="/logout" class="nav-form">
+          <button type="submit">Logga ut</button>
+        </form>
+      </nav>
+    </header>
+    <main>
+      <p><a href="/invoices">← Till fakturorna</a></p>
+      <h1><%= invoice.invoice_number %></h1>
+      <dl>
+        <dt>Belopp</dt>
+        <dd><%= invoice.amount_cents %> öre</dd>
+        <dt>Status</dt>
+        <dd><%= invoice.status %></dd>
+        <dt>Intern anteckning</dt>
+        <dd><%= invoice.billing_note %></dd>
+      </dl>
+    </main>
+  </body>
+</html>

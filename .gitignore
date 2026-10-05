@@ -1,0 +1,10 @@
+node_modules/
+.DS_Store
+dist/*
+!dist/.gitkeep
+*.sqlite
+*.sqlite-journal
+.env
+*.log
+coverage/
+temp/

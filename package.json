@@ -1,0 +1,63 @@
+{
+  "name": "securehub",
+  "version": "0.1.0",
+  "private": true,
+  "description": "SecureHub local security training application",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/server.js",
+    "dev": "tsx src/server.ts",
+    "db:migrate": "tsx src/db/migrate.ts",
+    "db:seed": "tsx src/db/seed.ts",
+    "db:reset": "tsx src/db/reset.ts",
+    "test": "vitest run tests/functional/app.test.ts",
+    "test:functional": "vitest run tests/functional/app.test.ts",
+    "lint": "eslint .",
+    "format": "prettier --write README.md src tests package.json tsconfig.json eslint.config.js .prettierrc",
+    "format:check": "prettier --check README.md src tests package.json tsconfig.json eslint.config.js .prettierrc"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^12.4.1",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "@types/better-sqlite3": "^9.6.0",
+    "@types/ejs": "^3.1.5",
+    "@types/express": "^5.0.5",
+    "@types/express-session": "^1.18.2",
+    "@types/node": "^24.3.0",
+    "@types/supertest": "^6.0.3",
+    "eslint": "^9.35.0",
+    "prettier": "^3.6.2",
+    "supertest": "^7.1.4",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.69.0",
+    "vitest": "^5.0.3"
+  },
+  "overrides": {
+    "eslint": {
+      "minimatch": {
+        "brace-expansion": "^1.1.21"
+      }
+    },
+    "filelist": {
+      "minimatch": {
+        "brace-expansion": "^2.1.7"
+      }
+    },
+    "@typescript-eslint/typescript-estree": {
+      "minimatch": {
+        "brace-expansion": "^5.0.12"
+      }
+    }
+  }
+}

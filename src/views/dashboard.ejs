@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/styles.css" />
+    <title>Översikt – SecureHub</title>
+  </head>
+  <body>
+    <header>
+      <nav aria-label="Huvudnavigation">
+        <a href="/dashboard">SecureHub</a>
+        <a href="/dashboard">Översikt</a>
+        <a href="/search">Sök ärenden</a>
+        <a href="/profile">Profil</a>
+        <% if (user.role === 'admin') { %>
+          <a href="/admin/users">Användare</a>
+        <% } %>
+        <span class="nav-user"><%= user.display_name %> (<%= user.role %>)</span>
+        <form method="post" action="/logout" class="nav-form">
+          <button type="submit">Logga ut</button>
+        </form>
+      </nav>
+    </header>
+    <main>
+      <h1>Översikt</h1>
+      <p>Välkommen, <%= user.display_name %>.</p>
+
+      <section aria-labelledby="tickets-heading">
+        <h2 id="tickets-heading">Ärenden</h2>
+        <% if (tickets.length === 0) { %>
+          <p>Inga ärenden att visa.</p>
+        <% } else { %>
+          <ul>
+            <% tickets.forEach((ticket) => { %>
+              <li><a href="/tickets/<%= ticket.id %>"><%= ticket.title %></a> (<%= ticket.status %>)</li>
+            <% }) %>
+          </ul>
+        <% } %>
+      </section>
+
+      <section aria-labelledby="invoices-heading">
+        <h2 id="invoices-heading">Senaste fakturor</h2>
+        <% if (invoices.length === 0) { %>
+          <p>Inga fakturor att visa.</p>
+        <% } else { %>
+          <ul>
+            <% invoices.forEach((invoice) => { %>
+              <li><a href="/invoices/<%= invoice.id %>"><%= invoice.invoice_number %></a> – <%= invoice.amount_cents %> öre</li>
+            <% }) %>
+          </ul>
+        <% } %>
+      </section>
+    </main>
+  </body>
+</html>

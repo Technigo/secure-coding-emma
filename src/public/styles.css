@@ -1,0 +1,58 @@
+:root {
+  color: #1f2933;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+body {
+  margin: 0;
+  background: #f5f7fa;
+}
+
+header {
+  background: #17324d;
+  color: #fff;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+nav a {
+  color: #fff;
+}
+
+.nav-user {
+  margin-left: auto;
+}
+
+.nav-form {
+  margin: 0;
+}
+
+main {
+  max-width: 60rem;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+form {
+  display: grid;
+  gap: 0.5rem;
+  max-width: 28rem;
+}
+
+input,
+button {
+  font: inherit;
+  padding: 0.5rem;
+}
+
+button {
+  cursor: pointer;
+}
