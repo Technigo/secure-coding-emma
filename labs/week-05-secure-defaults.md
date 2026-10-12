@@ -12,6 +12,8 @@ Du ska kunna granska konfiguration och felhantering som säkerhetskontroller, in
 4. Dokumentera vilka lokala begränsningar som är avsiktliga och vilka som behöver ändras före produktion.
 5. Lägg till tester för de standarder du vill skydda mot framtida regressioner.
 
-## Inlämning
+## Resultat
+
+Labben lämnas inte in. När du är klar ska du ha:
 
 En konfigurationschecklista, minst ett regressionstest, en kort teknisk motivering av en vald säker standardinställning samt relevanta antaganden eller tekniska begränsningar.

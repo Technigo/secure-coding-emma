@@ -9,9 +9,9 @@ Detta är en teknisk granskning av kod — inte en övning i granskningsprocess,
 ## Del A — Säker kodgranskning och säkerhetsmönster
 
 1. Välj två eller tre av de brister du redan har arbetat med (t.ex. från vecka 1–4) och läs om koden som om du granskade den åt en kollega.
-2. För varje vald plats: identifiera det mönster som orsakade bristen (t.ex. saknad ägarkontroll, strängbyggd SQL, oescapad utdata, friformig fältuppdatering).
+2. För varje vald plats: Identifiera det mönster som orsakade bristen (t.ex. saknad ägarkontroll, strängbyggd SQL, oescapad utdata, friformig fältuppdatering).
 3. Jämför den sårbara varianten med en säkrare implementation av samma funktion. Formulera skillnaden i en mening — vad är det som faktiskt gör den säkrare varianten säker?
-4. Granska en given åtgärd (din egen eller en kollegas) och bedöm om den löser grundorsaken eller bara döljer symptomet. Exempel på skenlösningar att leta efter: filtrering i gränssnittet, hårdkodade undantag för enstaka ID, validering endast på klienten.
+4. Granska en given åtgärd (din egen eller en kollegas) och bedöm om den löser grundorsaken eller bara döljer symptomet. Exempel på skenlösningar att leta efter: Filtrering i gränssnittet, hårdkodade undantag för enstaka ID, validering endast på klienten.
 
 ## Del B — Säkerhetstestning och robust implementation
 
@@ -20,8 +20,8 @@ Detta är en teknisk granskning av kod — inte en övning i granskningsprocess,
 3. Pröva om din åtgärd går att kringgå med en närliggande variant av anropet (t.ex. annan HTTP-metod, annat fält, annat ID-format). Justera åtgärden om testet avslöjar en lucka.
 4. Kontrollera att den normala, avsedda funktionaliteten fortfarande fungerar efter ändringen.
 
-## Inlämning
+## Resultat
+
+Labben lämnas inte in. När du är klar ska du ha:
 
 Kortfattade fynd per granskad kodplats, eventuella kodändringar, dina positiva/negativa tester (eller annan reproducerbar verifiering), och en kort teknisk motivering av varför åtgärden löser grundorsaken.
-
-Avslöja inte svaren till lärarens dolda tester — beskriv din egen analys och dina egna tester.

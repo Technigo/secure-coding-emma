@@ -15,6 +15,8 @@ Du ska kunna skilja på autentisering och auktorisering och genomföra en server
 
 Ändra inte fakturor eller andra användares data under demonstrationen. Använd endast den fiktiva seed-datan.
 
-## Inlämning
+## Resultat
+
+Labben lämnas inte in. När du är klar ska du ha:
 
 En liten kodändring, ett regressionstest och en kort förklaring av var auktoriseringsbeslutet fattas. Beskriv också skillnaden mellan 403 och 404 i ditt val.

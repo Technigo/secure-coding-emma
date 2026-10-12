@@ -13,6 +13,8 @@ Du ska kunna granska ett självbetjäningsflöde där klientens fält inte får 
 5. Kontrollera att administratörssidan fortfarande skyddas efter en manipulerad profilbegäran.
 6. Kontrollera att aktuell roll läses från databasen på skyddade requests och inte enbart från sessionen.
 
-## Inlämning
+## Resultat
+
+Labben lämnas inte in. När du är klar ska du ha:
 
 Ett regressionstest för den skrivbara profilen, ett test som försöker ändra en behörighetsrelaterad egenskap och en kort motivering av var tillitsgränsen går.

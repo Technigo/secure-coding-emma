@@ -19,6 +19,8 @@ Du ska kunna identifiera när data blandas ihop med SQL eller HTML och välja en
 3. Följ kommentaren från formuläret till databasen och vidare till HTML-svaret.
 4. Säkerställ att kommentaren visas som data och inte som ny HTML.
 
-## Inlämning
+## Resultat
+
+Labben lämnas inte in. När du är klar ska du ha:
 
 Kodändringarna, ett test för sökning med kontrolltecken, ett test för HTML-tecken i kommentar och en kort jämförelse mellan parameterisering och output encoding. Testerna ska även visa att normal funktion finns kvar.
