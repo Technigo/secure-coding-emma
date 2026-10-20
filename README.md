@@ -7,6 +7,8 @@ SecureHub är en lokal övningsapplikation som används under kursen Säker kodn
 SecureHub kräver Node.js 22 eller senare.
 
 ```bash
+git clone https://github.com/Technigo/secure-coding-emma.git
+cd secure-coding-emma
 npm install
 npm run db:reset
 npm run dev
